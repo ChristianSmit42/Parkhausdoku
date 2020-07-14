@@ -1,19 +1,18 @@
 package de.ifsb.parkhausdoku.controller;
 
+import de.ifsb.parkhausdoku.model.AddAdmissionDto;
 import de.ifsb.parkhausdoku.model.Admission;
 import de.ifsb.parkhausdoku.service.AdmissionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/docu")
+@RequestMapping("/api/admission")
 @AllArgsConstructor
 public class AdmissionController {
 
@@ -26,5 +25,10 @@ public class AdmissionController {
             return admission.get();
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "admission with id: " + id + " not found");
+    }
+
+    @PutMapping
+    public Admission addAdmission(@RequestBody AddAdmissionDto dto){
+        return admissionService.addAdmission(dto);
     }
 }
