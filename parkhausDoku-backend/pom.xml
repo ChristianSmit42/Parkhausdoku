@@ -12,7 +12,7 @@
     <artifactId>parkhausdoku</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>parkhausdoku</name>
-    <description>Aufnahme von Auffälligkeiten</description>
+    <description>project</description>
 
     <properties>
         <java.version>14</java.version>
