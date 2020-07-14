@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Test for protexted Master branch</Text>
+      <Text>Test for protexted Master branch again</Text>
       <StatusBar style="auto" />
     </View>
   );
