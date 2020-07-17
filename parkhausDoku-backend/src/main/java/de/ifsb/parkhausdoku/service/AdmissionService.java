@@ -25,4 +25,12 @@ public class AdmissionService {
         admission.setInformation(data.getInformation());
         return admissionDb.save(admission);
     }
+
+    public void deleteAdmissionById(String id) {
+        admissionDb.deleteById(id);
+    }
+
+    public Iterable<Admission> getAllAdmissions() {
+        return admissionDb.findAll();
+    }
 }
