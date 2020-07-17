@@ -27,8 +27,18 @@ public class AdmissionController {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "admission with id: " + id + " not found");
     }
 
+    @GetMapping
+    public Iterable<Admission> getAllAdmissions(){
+        return admissionService.getAllAdmissions();
+    }
+
     @PutMapping
     public Admission addAdmission(@RequestBody AddAdmissionDto dto){
         return admissionService.addAdmission(dto);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteAdmissionById(@PathVariable String id){
+        admissionService.deleteAdmissionById(id);
     }
 }
