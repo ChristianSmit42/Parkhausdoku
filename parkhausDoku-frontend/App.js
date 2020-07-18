@@ -1,24 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
+import {StatusBar} from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import {SafeAreaProvider} from "react-native-safe-area-context";
+import {StyleSheet, Text, View} from 'react-native';
 import Plan2D from "./components/2DPlan/Plan2D";
+import Overview from "./screens/Overview";
 
 export default function App() {
-  return (
-      <SafeAreaProvider forceInset={{ top: 'always' }}>
-        <View style={styles.container}>
-            <Plan2D/>
-        </View>
-      </SafeAreaProvider>
-  );
+    return <View style={styles.container}>
+        <StatusBar style="auto"/>
+        <Overview></Overview>
+    </View>;
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+    },
 });
