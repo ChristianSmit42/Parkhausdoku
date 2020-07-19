@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>de.ifsb</groupId>
-    <artifactId>parkhausdoku</artifactId>
+    <artifactId>parkhausdoku-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>parkhausdoku</name>
+    <name>parkhausdoku-backend</name>
     <description>project</description>
 
     <properties>
@@ -62,5 +62,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>
