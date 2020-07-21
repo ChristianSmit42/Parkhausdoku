@@ -33,12 +33,12 @@ public class AdmissionController {
     }
 
     @PutMapping
-    public Admission addAdmission(@RequestBody AddAdmissionDto dto){
+    public Admission addAdmission(@RequestBody @Valid AddAdmissionDto dto){
         return admissionService.addAdmission(dto);
     }
 
     @DeleteMapping("{id}")
-    public void deleteAdmissionById(@PathVariable String id){
+    public void deleteAdmissionById(@PathVariable @Valid String id){
         admissionService.deleteAdmissionById(id);
     }
 }
