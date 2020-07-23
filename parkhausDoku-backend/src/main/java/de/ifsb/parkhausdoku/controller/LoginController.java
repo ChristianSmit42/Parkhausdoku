@@ -28,7 +28,7 @@ public class LoginController {
     public String login(@RequestBody LoginData data){
         try {
 
-            String username = data.getUsername().toLowerCase();
+            String username = data.getUsername();
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
             return jwtUtils.createToken(new HashMap<>(), username);
         }catch (Exception e){

@@ -49,11 +49,11 @@ class AdmissionControllerTest {
     }
 
     private String loginUser(){
-        String password = "somePassword";
-        PlanningUser planningUser = new PlanningUser("superUser", encoder.encode(password), "admin");
+        String password = "somepassword";
+        PlanningUser planningUser = new PlanningUser("superuser", encoder.encode(password), "admin");
         userDb.save(planningUser);
         String url = "http://localhost:"+port+"/auth/login";
-        ResponseEntity<String> responseToken = restTemplate.postForEntity(url,new LoginData("superUser", "somePassword"), String.class);
+        ResponseEntity<String> responseToken = restTemplate.postForEntity(url,new LoginData("superuser", "somepassword"), String.class);
         return responseToken.getBody();
     }
 
