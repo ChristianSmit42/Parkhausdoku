@@ -7,7 +7,6 @@ import de.ifsb.parkhausdoku.model.Admission;
 import de.ifsb.parkhausdoku.model.LoginData;
 import de.ifsb.parkhausdoku.model.PlanningUser;
 import de.ifsb.parkhausdoku.utils.IdUtils;
-import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

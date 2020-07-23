@@ -19,7 +19,6 @@ public class AdmissionService {
     }
 
     public Admission addAdmission(AddAdmissionDto data) {
-
         Admission admission = new Admission();
         admission.setId(idUtils.randomId());
         admission.setInformation(data.getInformation());
