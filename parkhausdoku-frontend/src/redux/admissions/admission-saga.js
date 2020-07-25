@@ -24,7 +24,7 @@ function* deleteAdmission() {
 
     try {
         const token = yield select(getAuthToken)
-        yield deleteAdmissionById(token);
+        yield deleteAdmissionById(token, "2");
         yield put({type: DELETE_ADMISSION_SUCCESS})
     } catch (e) {
         yield put({type: DELETE_ADMISSION_FAILED})

@@ -16,7 +16,7 @@ const admissionReducer = (state = {status: null, items: []}, action) => {
         case DELETE_ADMISSION_SUCCESS:
             return {
                 status: 'SUCCESS', items: state.items.filter((admission) => {
-                    return admission.id !== '2';
+                    return admission.id !== "2"
                 })
             }
         default:

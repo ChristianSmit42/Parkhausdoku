@@ -8,7 +8,9 @@ export default function AdmissionCard(props){
     const dispatch = useDispatch();
 
     function handleDelete() {
-        dispatch({type:DELETE_ADMISSION})
+        dispatch({
+            type:DELETE_ADMISSION
+        })
     }
 
     return(

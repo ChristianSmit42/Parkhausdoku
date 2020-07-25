@@ -9,9 +9,10 @@ import {SafeAreaProvider} from "react-native-safe-area-context";
 import {Provider, useSelector} from 'react-redux'
 import {configureStore} from "./src/redux/store";
 import {HomeScreen} from "./src/screens/main/HomeScreen";
-import {isUserAuthenticated} from "./src/redux/auth/auth-selector";
+import {isJwtTokenValid, isUserAuthenticated} from "./src/redux/auth/auth-selector";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Detailscreen from "./src/screens/main/Detailscreen";
+import {StatusBar} from "react-native";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +30,7 @@ function HomeStack() {
 }
 
 function RootNavigation() {
-    const authenticated = useSelector(isUserAuthenticated);
+    const authenticated = useSelector(isUserAuthenticated)
 
     return <NavigationContainer>
         {authenticated ? <HomeStack/> : <AuthStack/>}
@@ -44,6 +45,7 @@ export default function App() {
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <SafeAreaProvider>
+                    <StatusBar/>
                     <RootNavigation/>
                 </SafeAreaProvider>
             </PersistGate>
