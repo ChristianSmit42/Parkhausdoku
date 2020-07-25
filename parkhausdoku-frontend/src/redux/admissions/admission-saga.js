@@ -1,6 +1,13 @@
 import {put, select, takeEvery} from "@redux-saga/core/effects";
 import {getAuthToken} from "../auth/auth-selector";
-import {fetchAllAdmissions, LOAD_ADMISSIONS_FAILED, LOAD_ADMISSIONS_SUCCESS} from "../utils/admission-utils";
+import {
+    DELETE_ADMISSION,
+    DELETE_ADMISSION_FAILED,
+    DELETE_ADMISSION_SUCCESS, deleteAdmissionById,
+    fetchAllAdmissions, LOAD_ADMISSIONS,
+    LOAD_ADMISSIONS_FAILED,
+    LOAD_ADMISSIONS_SUCCESS
+} from "../utils/admission-utils";
 
 
 function* loadAdmissions() {
@@ -13,7 +20,18 @@ function* loadAdmissions() {
         yield put({type: LOAD_ADMISSIONS_FAILED})
     }
 }
+function* deleteAdmission() {
+
+    try {
+        const token = yield select(getAuthToken)
+        yield deleteAdmissionById(token);
+        yield put({type: DELETE_ADMISSION_SUCCESS})
+    } catch (e) {
+        yield put({type: DELETE_ADMISSION_FAILED})
+    }
+}
 
 export const admissionSaga = [
-    takeEvery('LOAD_ADMISSIONS', loadAdmissions)
+    takeEvery(LOAD_ADMISSIONS, loadAdmissions),
+    takeEvery(DELETE_ADMISSION, deleteAdmission) // WIE BEKOMME ICH HIER DIE ID REIN?
 ]

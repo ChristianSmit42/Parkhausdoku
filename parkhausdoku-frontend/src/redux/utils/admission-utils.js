@@ -14,15 +14,29 @@ export const ADD_ADMISSION_FAILED = 'ADD_ADMISSION_FAILED';
 
 
 export async function fetchAllAdmissions(token) {
-        const response = await fetch(`${serverUrl}/api/admission`,
-            {
-                method: "GET",
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                },
-            });
-        if(response.status !== 200){
+    const response = await fetch(`${serverUrl}/api/admission`,
+        {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+        });
+    if (response.status !== 200) {
         throw new Error(response.statusText);
     }
     return await response.json();
+}
+
+export async function deleteAdmissionById(token) { // HIER MUSS DIE ID MIT REIN
+    let id = 2;
+    const response = await fetch(`${serverUrl}/api/admission/${id}`,
+        {
+            method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+        });
+    if (response.status !== 200) {
+        throw new Error(response.statusText);
+    }
 }
