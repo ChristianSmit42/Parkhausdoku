@@ -1,5 +1,11 @@
+import {serverUrl} from "../redux-config";
+
+export const LOGIN = 'LOGIN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const LOGOUT = 'LOGOUT';
+
 export async function performLogin(username, password) {
-    const serverUrl = "http://192.168.178.68:8080";
     const response = await fetch(serverUrl + "/auth/login", {
         method: 'POST',
         headers: {

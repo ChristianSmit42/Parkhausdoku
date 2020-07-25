@@ -1,5 +1,5 @@
 import {put, takeEvery} from "@redux-saga/core/effects";
-import {performLogin} from "../../utils/auth-utils";
+import {performLogin} from "../utils/auth-utils";
 
 
 function* loginAction(action) {
