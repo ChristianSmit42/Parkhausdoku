@@ -9,14 +9,19 @@ export default function AdmissionCard(props){
 
     function handleDelete() {
         dispatch({
-            type:DELETE_ADMISSION
+            type:DELETE_ADMISSION,
+            payload:{id:props.id}
         })
     }
 
     return(
         <Container>
             <Text>{props.information}</Text>
+            <Text>{props.id}</Text>
             <Button onPress={handleDelete}/>
         </Container>
     )
 }
+
+
+

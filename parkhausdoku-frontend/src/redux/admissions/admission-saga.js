@@ -20,12 +20,13 @@ function* loadAdmissions() {
         yield put({type: LOAD_ADMISSIONS_FAILED})
     }
 }
-function* deleteAdmission() {
+function* deleteAdmission(action) {
 
     try {
         const token = yield select(getAuthToken)
-        yield deleteAdmissionById(token, "2");
-        yield put({type: DELETE_ADMISSION_SUCCESS})
+        const id = action.payload.id;
+        yield deleteAdmissionById(token, id);
+        yield put({type: DELETE_ADMISSION_SUCCESS, payload:id})
     } catch (e) {
         yield put({type: DELETE_ADMISSION_FAILED})
     }

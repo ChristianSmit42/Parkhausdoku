@@ -27,7 +27,7 @@ export async function fetchAllAdmissions(token) {
     return await response.json();
 }
 
-export async function deleteAdmissionById(token, id) { // HIER MUSS DIE ID MIT REIN
+export async function deleteAdmissionById(token, id) {
     const response = await fetch(`${serverUrl}/api/admission/${id}`,
         {
             method: "DELETE",

@@ -26,7 +26,7 @@ export default function Detailscreen() {
 
             <Scrollcontainer>
                 {admissions && admissions.map((item) => (
-                    <AdmissionCard key={item.id} information={item.information}/>
+                    <AdmissionCard key={item.id} information={item.information} id={item.id}/>
                 ))}
             </Scrollcontainer>
         </Container>
