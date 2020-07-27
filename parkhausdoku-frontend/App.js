@@ -9,7 +9,7 @@ import {SafeAreaProvider} from "react-native-safe-area-context";
 import {Provider, useSelector} from 'react-redux'
 import {configureStore} from "./src/redux/store";
 import {HomeScreen} from "./src/screens/main/HomeScreen";
-import {isJwtTokenValid, isUserAuthenticated} from "./src/redux/auth/auth-selector";
+import {isUserAuthenticated} from "./src/redux/auth/auth-selector";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Detailscreen from "./src/screens/main/Detailscreen";
 import {StatusBar} from "react-native";

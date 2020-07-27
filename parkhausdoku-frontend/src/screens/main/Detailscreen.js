@@ -6,8 +6,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {listAllAdmissions} from "../../redux/admissions/admission-selector";
 import {LOAD_ADMISSIONS} from "../../redux/utils/admission-utils";
 import AdmissionCard from "../../components/AdmissionCard/AdmissionCard";
+import {serverUrl} from "../../redux/redux-config";
 
-
+//'https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_The_Simpsons.svg'
 
 export default function Detailscreen() {
 
@@ -21,7 +22,7 @@ export default function Detailscreen() {
     return (
         <Container>
             <Map
-                url={'https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_The_Simpsons.svg'}
+                url={`${serverUrl}/plan2.png`}
             />
 
             <Scrollcontainer>

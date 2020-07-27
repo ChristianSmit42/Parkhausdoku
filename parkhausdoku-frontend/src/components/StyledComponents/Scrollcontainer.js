@@ -3,8 +3,8 @@ import styled from 'styled-components/native'
 
 export default function Scrollcontainer(props){
 
-    return <StyledContainer>{props.children}</StyledContainer>
+    return <StyledContainer horizontal={true}>{props.children}</StyledContainer>
 }
 const StyledContainer = styled.ScrollView`
-    max-height:30%;
+  max-height:20%;
 `
