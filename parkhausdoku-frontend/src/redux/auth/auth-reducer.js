@@ -1,12 +1,14 @@
+import {LOGIN, LOGIN_FAILED, LOGIN_SUCCESS, LOGOUT} from "../utils/auth-utils"
+
 const authReducer = (state = {status: undefined}, action) => {
     switch (action.type) {
-        case 'LOGIN':
+        case LOGIN:
             return {status: 'PENDING'}
-        case 'LOGIN_SUCCESS':
+        case LOGIN_SUCCESS:
             return {status: 'SUCCESS', token: action.payload.token}
-        case 'LOGIN_FAILED':
+        case LOGIN_FAILED:
             return {status: 'FAILED'}
-        case 'LOGOUT':
+        case LOGOUT:
             return {status: undefined}
         default:
             return state
