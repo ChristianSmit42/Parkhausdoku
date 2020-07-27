@@ -22,7 +22,7 @@ export default function Detailscreen() {
     return (
         <Container>
             <Map
-                url={`${serverUrl}/plan2.png`}
+                url={`${serverUrl}/ug2_plan_redu.svg`}
             />
 
             <Scrollcontainer>

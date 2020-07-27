@@ -1,9 +1,10 @@
 import React from "react";
 import {SvgUri} from "react-native-svg";
-import {ActivityIndicator, Text, View} from "react-native";
+import {ActivityIndicator, Dimensions, Text, View} from "react-native";
 import Container from "../StyledComponents/Container";
 import {Image} from "react-native-elements";
 import styled from 'styled-components/native'
+import ImageZoom from "react-native-image-pan-zoom";
 
 export default function Map({url}){
 
@@ -14,26 +15,24 @@ export default function Map({url}){
                     Titel
                 </StyledText>
             </CenteredView>
-            <View>
-                <Image
-                    source={{uri: url}}
-                    style={{ width: '100%', height: '99%' }}
-                    PlaceholderContent={<ActivityIndicator />}
+            <ImageZoom cropWidth={Dimensions.get('window').width}
+                       cropHeight={'95%'}
+                       imageWidth={500}
+                       imageHeight={500}>
+                <SvgUri
+                    width='90%'
+                    height='90%'
+                    uri={url}
                 />
-                {/*<SvgUri*/}
-                {/*    width='90%'*/}
-                {/*    height='90%'*/}
-                {/*    uri={url}*/}
-                {/*/>*/}
-            </View>
+            </ImageZoom>
         </Container>
     )
 }
 
 const CenteredView = styled.View`
   align-items: center;
-  background-color: #124045;
+  background-color: #172124;
 `
 const StyledText=styled.Text`
-  color: #c8cdd0;
+  color: cornsilk;
 `
