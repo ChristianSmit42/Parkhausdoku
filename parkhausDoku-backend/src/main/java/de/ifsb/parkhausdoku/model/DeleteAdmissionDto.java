@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class AddAdmissionDto {
-    private String information;
+public class DeleteAdmissionDto {
+    private String admissionId;
     private String levelId;
     private String buildingId;
 }
