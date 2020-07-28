@@ -1,25 +1,38 @@
 import React from "react";
-import {Card} from "react-native-elements";
 import {SvgUri} from "react-native-svg";
-import {Text, View} from "react-native";
+import {ActivityIndicator, Dimensions, Text, View} from "react-native";
 import Container from "../StyledComponents/Container";
+import {Image} from "react-native-elements";
+import styled from 'styled-components/native'
+import ImageZoom from "react-native-image-pan-zoom";
 
 export default function Map({url}){
 
     return (
         <Container>
-            <View>
-                <Text>
+            <CenteredView>
+                <StyledText>
                     Titel
-                </Text>
-            </View>
-            <View>
+                </StyledText>
+            </CenteredView>
+            <ImageZoom cropWidth={Dimensions.get('window').width}
+                       cropHeight={'95%'}
+                       imageWidth={500}
+                       imageHeight={500}>
                 <SvgUri
                     width='90%'
                     height='90%'
                     uri={url}
                 />
-            </View>
+            </ImageZoom>
         </Container>
     )
 }
+
+const CenteredView = styled.View`
+  align-items: center;
+  background-color: #172124;
+`
+const StyledText=styled.Text`
+  color: cornsilk;
+`

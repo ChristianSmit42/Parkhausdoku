@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text} from "react-native";
-import Container from "../components/StyledComponents/Container";
+import Container from "../../components/StyledComponents/Container";
 
 export default function Overviewscreen() {
 
