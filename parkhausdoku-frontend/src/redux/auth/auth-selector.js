@@ -17,6 +17,5 @@ export function isJwtTokenValid(state){
         return false
     }
     const decodedToken = jwtDecode(token)
-    console.log(decodedToken)
     return new Date().getTime() / 1000 < decodedToken.exp
 }
