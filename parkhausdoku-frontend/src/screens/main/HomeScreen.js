@@ -1,24 +1,26 @@
 import React, {useEffect} from "react";
-import {SafeAreaView} from "react-native";
 import {useDispatch, useSelector} from "react-redux";
-import {ListItem} from "react-native-elements";
-import {listAllAdmissions} from "../../redux/admissions/admission-selector";
+import {listAllBuildings} from "../../redux/buildings/building-selector";
+import {LOAD_BUILDINGS} from "../../redux/utils/building-utils";
+import Container from "../../components/StyledComponents/Container";
+import AdmissionCard from "../../components/AdmissionCard/AdmissionCard";
 
-export function HomeScreen() {
+export default function HomeScreen() {
     const dispatch = useDispatch();
-    const admissions = useSelector(listAllAdmissions)
+    const buildings = useSelector(listAllBuildings)
+    const ownerId="ownerId";
     useEffect(() => {
-        dispatch({type: 'LOAD_ADMISSIONS'})
+        dispatch({
+            type: LOAD_BUILDINGS,
+            payload:{ownerId:ownerId}})
     }, [])
 
-    return <SafeAreaView>
-        {admissions && admissions.map((item) => (
-            <ListItem
-                key={item.id}
-                title={'fdsfgdgsg'}
-                bottomDivider
-                chevron
-            />
-        ))}
-    </SafeAreaView>
+    return (
+        <Container>
+            {buildings && buildings.map((item)=>(
+                <AdmissionCard key={item.id} information={item.id} id={item.id}/>
+            ))}
+
+        </Container>
+    );
 }

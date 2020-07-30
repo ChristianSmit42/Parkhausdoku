@@ -8,7 +8,7 @@ import LoginScreen from "./src/screens/auth/LoginScreen";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {Provider, useSelector} from 'react-redux'
 import {configureStore} from "./src/redux/store";
-import {HomeScreen} from "./src/screens/main/HomeScreen";
+import HomeScreen from "./src/screens/main/HomeScreen";
 import {isUserAuthenticated} from "./src/redux/auth/auth-selector";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Detailscreen from "./src/screens/main/Detailscreen";
