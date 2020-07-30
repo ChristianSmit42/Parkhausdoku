@@ -41,9 +41,9 @@ public class AdmissionService {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Admission with id: " + id + " not found");
     }
 
-    public void addAdmissionToBuildingAndLevel(AddAdmissionDto data) {
-        Building building = getBuildingById(data.getBuildingId());
-        Level level = getLevelById(building, data.getLevelId());
+    public void addAdmissionToBuildingAndLevel(AddAdmissionDto data, String buildingId, String levelId) {
+        Building building = getBuildingById(buildingId);
+        Level level = getLevelById(building, levelId);
 
         Admission admission = new Admission();
         admission.setId(idUtils.randomId());
@@ -54,10 +54,10 @@ public class AdmissionService {
         buildingDb.save(building);
     }
 
-    public void deleteAdmissionById(DeleteAdmissionDto data) {
-        Building building = getBuildingById(data.getBuildingId());
-        Level level = getLevelById(building, data.getLevelId());
-        Admission admission = getAdmissionById(level, data.getAdmissionId());
+    public void deleteAdmissionById(String admissionId, String buildingId, String levelId) {
+        Building building = getBuildingById(buildingId);
+        Level level = getLevelById(building, levelId);
+        Admission admission = getAdmissionById(level, admissionId);
 
         building.getLevels().remove(level);
         level.getAdmissions().remove(admission);

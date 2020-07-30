@@ -1,6 +1,5 @@
 package de.ifsb.parkhausdoku.controller;
 import de.ifsb.parkhausdoku.model.AddAdmissionDto;
-import de.ifsb.parkhausdoku.model.DeleteAdmissionDto;
 import de.ifsb.parkhausdoku.service.AdmissionService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -8,23 +7,20 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/admission")
+@RequestMapping("/api/building/{buildingId}/{levelId}/admission")
 @AllArgsConstructor
 public class AdmissionController {
 
-    AdmissionService admissionService;
+    private final AdmissionService admissionService;
 
     @PutMapping
-    public void addAdmission(@RequestBody @Valid AddAdmissionDto dto){
-        admissionService.addAdmissionToBuildingAndLevel(dto);
+    public void addAdmission(@RequestBody @Valid AddAdmissionDto dto, @PathVariable String buildingId, @PathVariable String levelId){
+        admissionService.addAdmissionToBuildingAndLevel(dto,buildingId,levelId);
     }
-
-    @DeleteMapping
-    public void deleteAdmissionById(@RequestBody @Valid DeleteAdmissionDto dto){
-        admissionService.deleteAdmissionById(dto);
+    @DeleteMapping("{admissionId}")
+    public void deleteAdmissionById(@PathVariable String admissionId, @PathVariable String buildingId, @PathVariable String levelId){
+        admissionService.deleteAdmissionById(admissionId, buildingId, levelId);
     }
-
-
 }
 
 
