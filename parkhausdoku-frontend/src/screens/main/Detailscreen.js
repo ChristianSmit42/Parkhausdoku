@@ -7,6 +7,7 @@ import {listAllAdmissions} from "../../redux/admissions/admission-selector";
 import {LOAD_ADMISSIONS} from "../../redux/utils/admission-utils";
 import AdmissionCard from "../../components/AdmissionCard/AdmissionCard";
 import {serverUrl} from "../../redux/redux-config";
+import 'react-native-gesture-handler';
 
 
 export default function Detailscreen() {

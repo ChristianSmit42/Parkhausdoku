@@ -1,10 +1,9 @@
 import React from "react";
-import 'react-native-gesture-handler';
 import {Text} from "react-native-elements";
 import {DELETE_ADMISSION} from "../../redux/utils/admission-utils";
 import {useDispatch} from "react-redux";
 import CustomButton from "../StyledComponents/CustomButton";
-import styled from "styled-components/native"
+import styled from "styled-components/native";
 
 export default function AdmissionCard(props){
     const dispatch = useDispatch();

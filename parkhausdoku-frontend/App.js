@@ -13,6 +13,7 @@ import {isUserAuthenticated} from "./src/redux/auth/auth-selector";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Detailscreen from "./src/screens/main/Detailscreen";
 import {StatusBar} from "react-native";
+import Navbar from "./src/components/Navbar/Navbar";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -23,9 +24,9 @@ function AuthStack() {
 }
 
 function HomeStack() {
-    return <Tab.Navigator initialRouteName="Home" headerMode="none">
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Details" component={Detailscreen}/>
+    return <Tab.Navigator initialRouteName="Home">
+        <Tab.Screen name="Home" component={HomeScreen}/>
+        <Tab.Screen name="Settings" component={Detailscreen}/>
     </Tab.Navigator>
 }
 
@@ -46,6 +47,7 @@ export default function App() {
             <PersistGate loading={null} persistor={persistor}>
                 <SafeAreaProvider>
                     <StatusBar/>
+                    <Navbar/>
                     <RootNavigation/>
                 </SafeAreaProvider>
             </PersistGate>

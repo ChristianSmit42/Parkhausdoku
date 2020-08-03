@@ -1,14 +1,15 @@
 import React, {useEffect} from "react";
+import 'react-native-gesture-handler';
 import {useDispatch, useSelector} from "react-redux";
 import {listAllBuildings} from "../../redux/buildings/building-selector";
 import {LOAD_BUILDINGS} from "../../redux/utils/building-utils";
-import Container from "../../components/StyledComponents/Container";
-import AdmissionCard from "../../components/AdmissionCard/AdmissionCard";
+import BuildingCard from "../../components/BuildingCard/BuildingCard";
+import styled from 'styled-components/native'
 
 export default function HomeScreen() {
     const dispatch = useDispatch();
     const buildings = useSelector(listAllBuildings)
-    const ownerId="ownerId";
+    const ownerId="ifsb"; // needs to get owner ID from user
     useEffect(() => {
         dispatch({
             type: LOAD_BUILDINGS,
@@ -18,9 +19,14 @@ export default function HomeScreen() {
     return (
         <Container>
             {buildings && buildings.map((item)=>(
-                <AdmissionCard key={item.id} information={item.id} id={item.id}/>
+                <BuildingCard key={item.id} title={item.objectName} image={item.model}/>
             ))}
 
         </Container>
     );
 }
+
+const Container = styled.ScrollView`
+  flex:1;
+  background-color: #ffffff;
+`
