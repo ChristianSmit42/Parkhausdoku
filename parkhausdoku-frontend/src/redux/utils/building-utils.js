@@ -14,7 +14,6 @@ export async function fetchAllOwnedBuildings(token, ownerId) {
             },
         });
     if (response.status !== 200) {
-        console.log(response.status)
         throw new Error(response.statusText);
     }
 

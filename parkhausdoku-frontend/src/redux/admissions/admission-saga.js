@@ -34,5 +34,5 @@ function* deleteAdmission(action) {
 
 export const admissionSaga = [
     takeEvery(LOAD_ADMISSIONS, loadAdmissions),
-    takeEvery(DELETE_ADMISSION, deleteAdmission) // WIE BEKOMME ICH HIER DIE ID REIN?
+    takeEvery(DELETE_ADMISSION, deleteAdmission)
 ]

@@ -1,33 +1,27 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Container from "../../components/StyledComponents/Container";
 import {Text} from "react-native";
 import styled from 'styled-components/native'
 import Map from "../../components/Map/Map";
 import {serverUrl} from "../../redux/redux-config";
+import {listAllLevels} from "../../redux/levels/level-selector";
+import {useSelector} from "react-redux";
 import Scrollcontainer from "../../components/StyledComponents/Scrollcontainer";
 import AdmissionCard from "../../components/AdmissionCard/AdmissionCard";
 
-export default function Detailscreen({navigation, route}) {
+export default function Detailscreen({navigation}) {
 
-    const levels = route.params.levels;
-    const admissions = levels.admissions;
-    console.log(levels);
-
-    // const dispatch = useDispatch();
-    // const admissions = useSelector(listAllAdmissions)
-    // useEffect(() => {
-    //     dispatch({type: LOAD_ADMISSIONS})
-    // }, [])
-
-
+    const levels = useSelector(listAllLevels);
+    const [activeLevel,setActiveLevel]=useState(0)
+    const admissions=levels[activeLevel].admissions;
     return (
         <Container>
             <LevelContainer horizontal>
-                {levels && levels.map((item)=>(
-                    <ClickableLevel><Text>{item.id}</Text></ClickableLevel>
+                {levels && levels.map((item, index) => (
+                    <ClickableLevel key={item.id} onPress={()=>setActiveLevel(index)}><Text>{item.id}</Text></ClickableLevel>
                 ))}
             </LevelContainer>
-            <Map url={`${serverUrl}/ug2_plan.svg`}/>
+            <Map url={`${serverUrl}${levels[activeLevel].planUrl}`}/>
             <Scrollcontainer>
                 {admissions && admissions.map((item) => (
                     <AdmissionCard key={item.id} information={item.information} id={item.id}/>

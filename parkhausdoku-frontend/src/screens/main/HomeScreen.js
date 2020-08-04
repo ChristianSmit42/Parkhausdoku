@@ -5,11 +5,12 @@ import {LOAD_BUILDINGS} from "../../redux/utils/building-utils";
 import BuildingCard from "../../components/BuildingCard/BuildingCard";
 import styled from 'styled-components/native'
 import {ImageBackground} from "react-native";
+import {SET_LEVELS} from "../../redux/utils/level-utils";
 
 export default function HomeScreen({navigation}) {
     const dispatch = useDispatch();
     const buildings = useSelector(listAllBuildings)
-    const ownerId = "ifsb"; // needs to get owner ID from user
+    const ownerId = "ifsb";
     useEffect(() => {
         dispatch({
             type: LOAD_BUILDINGS,
@@ -25,7 +26,11 @@ export default function HomeScreen({navigation}) {
                                   title={item.objectName}
                                   image={item.model}
                                   navigate={() => {
-                                      navigation.navigate('Details',item)
+                                      dispatch({
+                                          type: SET_LEVELS,
+                                          payload: item.levels
+                                      })
+                                      navigation.navigate('Details')
                                   }}
                     />
                 ))}
