@@ -11,12 +11,19 @@ export default function AdmissionCard(props){
     function handleDelete() {
         dispatch({
             type:DELETE_ADMISSION,
-            payload:{id:props.id}
+            payload:{
+                admissionId:props.id,
+                buildingId:props.buildingId,
+                levelId:props.levelId,
+                levelIndex: props.levelIndex,
+            }
         })
     }
 
     return(
-        <Card>
+        <Card style={{
+            elevation:5,
+        }}>
             <Text>{props.information}</Text>
             <CustomButton function={handleDelete} text={"delete"}/>
         </Card>
@@ -28,7 +35,9 @@ export default function AdmissionCard(props){
 const Card = styled.View`
   width: 150px;
   height: 120px;
+  background: #fff;
   justify-content: space-between;
-  border: 1px solid grey;
+  border-radius:20px;
   padding: 5px 5px 10px 5px;
+  margin: 0 5px 5px 5px;
 `

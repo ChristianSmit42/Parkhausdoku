@@ -5,13 +5,13 @@ import Container from "../StyledComponents/Container";
 import styled from 'styled-components/native'
 import ImageZoom from "react-native-image-pan-zoom";
 
-export default function Map({url}){
+export default function Map(props){
 
     return (
         <Container>
             <CenteredView>
                 <StyledText>
-                    Titel
+                   Etage: {props.level}
                 </StyledText>
             </CenteredView>
             <ImageZoom cropWidth={Dimensions.get('window').width}
@@ -22,7 +22,7 @@ export default function Map({url}){
                 <SvgCssUri
                     width='90%'
                     height='90%'
-                    uri={url}
+                    uri={props.url}
                 />
             </ImageZoom>
         </Container>

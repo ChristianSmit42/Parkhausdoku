@@ -30,7 +30,7 @@ export default function HomeScreen({navigation}) {
                                           type: SET_LEVELS,
                                           payload: item.levels
                                       })
-                                      navigation.navigate('Details')
+                                      navigation.navigate('Details',item)
                                   }}
                     />
                 ))}
