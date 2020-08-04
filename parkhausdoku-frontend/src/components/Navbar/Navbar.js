@@ -7,7 +7,7 @@ export default function Navbar() {
         elevation: 5,
     }}>
         <Title>CON+ SCANTECH</Title>
-        <Logo source={require('./resources/branding.jpg')}/>
+        <Logo source={require('../../resources/branding.jpg')}/>
     </Header>
 
 }

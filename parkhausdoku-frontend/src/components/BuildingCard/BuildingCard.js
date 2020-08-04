@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components/native'
 import {serverUrl} from "../../redux/redux-config";
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 
 
 export default function BuildingCard(props){
@@ -9,7 +9,7 @@ export default function BuildingCard(props){
     return(
         <Container style={{
             elevation: 10,
-        }}>
+        }} onPress={props.navigate}>
             <Cover>
                 <Image source={
                     {uri: `${serverUrl}${props.image}`}
@@ -17,18 +17,19 @@ export default function BuildingCard(props){
             </Cover>
             <Content>
                 <Title>{props.title}</Title>
+
             </Content>
         </Container>
     );
 }
 const windowWidth = Dimensions.get('window').width-65;
 
-const Container = styled.View`
+const Container = styled.TouchableOpacity`
 	background: #fff;
 	height: 260px;
-	width: ${windowWidth};
+	width: ${windowWidth}px;
 	border-radius: 14px;
-	margin: 20px auto 0 auto;
+	margin: 0 auto 20px auto;
 	justify-content: space-between;
 `;
 

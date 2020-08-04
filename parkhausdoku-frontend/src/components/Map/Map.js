@@ -1,5 +1,5 @@
 import React from "react";
-import {SvgUri} from "react-native-svg";
+import {SvgCssUri} from "react-native-svg";
 import {Dimensions} from "react-native";
 import Container from "../StyledComponents/Container";
 import styled from 'styled-components/native'
@@ -18,9 +18,8 @@ export default function Map({url}){
                        cropHeight={'95%'}
                        imageWidth={1000}
                        imageHeight={1000}
-                       enableSwipeDown={true}
             >
-                <SvgUri
+                <SvgCssUri
                     width='90%'
                     height='90%'
                     uri={url}

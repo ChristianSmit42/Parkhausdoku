@@ -1,11 +1,9 @@
-
 import 'react-native-gesture-handler';
 import React from 'react';
 import { PersistGate } from 'redux-persist/integration/react'
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from "./src/screens/auth/LoginScreen";
-import {SafeAreaProvider} from "react-native-safe-area-context";
 import {Provider, useSelector} from 'react-redux'
 import {configureStore} from "./src/redux/store";
 import HomeScreen from "./src/screens/main/HomeScreen";
@@ -27,6 +25,7 @@ function HomeStack() {
     return <Tab.Navigator initialRouteName="Home">
         <Tab.Screen name="Home" component={HomeScreen}/>
         <Tab.Screen name="Settings" component={Detailscreen}/>
+        <Tab.Screen name="Details" component={Detailscreen}/>
     </Tab.Navigator>
 }
 
@@ -34,6 +33,8 @@ function RootNavigation() {
     const authenticated = useSelector(isUserAuthenticated)
 
     return <NavigationContainer>
+        <StatusBar/>
+        <Navbar/>
         {authenticated ? <HomeStack/> : <AuthStack/>}
     </NavigationContainer>;
 }
@@ -45,11 +46,7 @@ export default function App() {
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                <SafeAreaProvider>
-                    <StatusBar/>
-                    <Navbar/>
                     <RootNavigation/>
-                </SafeAreaProvider>
             </PersistGate>
         </Provider>
     );
