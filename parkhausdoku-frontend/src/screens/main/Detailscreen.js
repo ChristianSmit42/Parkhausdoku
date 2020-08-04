@@ -6,7 +6,6 @@ import Map from "../../components/Map/Map";
 import {serverUrl} from "../../redux/redux-config";
 import {listAllLevels} from "../../redux/levels/level-selector";
 import {useSelector} from "react-redux";
-import Scrollcontainer from "../../components/StyledComponents/Scrollcontainer";
 import AdmissionCard from "../../components/AdmissionCard/AdmissionCard";
 
 export default function Detailscreen({navigation, route}) {
