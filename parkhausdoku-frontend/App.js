@@ -11,7 +11,7 @@ import {isUserAuthenticated} from "./src/redux/auth/auth-selector";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Detailscreen from "./src/screens/main/Detailscreen";
 import {StatusBar} from "react-native";
-import Navbar from "./src/components/Navbar/Navbar";
+import TopBar from "./src/components/TopBar/TopBar";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -34,7 +34,7 @@ function RootNavigation() {
 
     return <NavigationContainer>
         <StatusBar/>
-        <Navbar/>
+        <TopBar/>
         {authenticated ? <HomeStack/> : <AuthStack/>}
     </NavigationContainer>;
 }

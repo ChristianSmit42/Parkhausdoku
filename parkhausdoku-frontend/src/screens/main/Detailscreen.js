@@ -35,7 +35,6 @@ export default function Detailscreen({navigation, route}) {
                         key={item.id}
                         buildingId={buildingId}
                         levelId={levels[activeLevel].id}
-                        levelIndex={activeLevel}
                         information={item.information}
                         id={item.id}/>
                 ))}

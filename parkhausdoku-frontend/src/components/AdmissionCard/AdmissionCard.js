@@ -15,7 +15,6 @@ export default function AdmissionCard(props){
                 admissionId:props.id,
                 buildingId:props.buildingId,
                 levelId:props.levelId,
-                levelIndex: props.levelIndex,
             }
         })
     }

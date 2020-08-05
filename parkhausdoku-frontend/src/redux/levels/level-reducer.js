@@ -10,12 +10,14 @@ const levelReducer = (state = {status: null,levels:[]}, action) => {
                 levels: action.payload,
             }
         case DELETE_ADMISSION_SUCCESS:
-            return {
-                status:'SUCCESS',
-                levels: state.levels[payload.levelIndex].admissions.filter((admission)=>{
-                    return admission.id !== action.payload.admissionId
-                })
-            }
+            const levelToUpdate = state.levels.find((level)=> level.id === action.payload.levelId);
+            const updatedLevel = {
+                ...levelToUpdate,
+                admissions: levelToUpdate.admissions.filter((admission)=> admission.id !== action.payload.admissionId)}
+
+            const updatedLevels = state.levels.filter((level)=> level.id !== action.payload.levelId);
+            updatedLevels.push(updatedLevel);
+            return {...state, levels:updatedLevels.sort((l1,l2)=> l1.level-l2.level)}
         default:
             return state
     }
