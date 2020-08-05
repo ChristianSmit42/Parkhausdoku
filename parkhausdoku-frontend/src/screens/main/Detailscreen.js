@@ -9,36 +9,38 @@ import {useSelector} from "react-redux";
 import AdmissionCard from "../../components/AdmissionCard/AdmissionCard";
 
 export default function Detailscreen({navigation, route}) {
-    const buildingId = route.params.id;
-    const levels = useSelector(listAllLevels);
-    const [activeLevel, setActiveLevel] = useState(0)
-    const admissions = levels[activeLevel].admissions;
+    const levels = useSelector(listAllLevels).filter(level=>(
+        level.buildingId=== route.params.id
+    ));
+
+
+    console.log(route)
     return (
         <Container>
             <LevelContainer horizontal>
                 {levels && levels.map((item, index) => (
                     <ClickableLevel key={item.id}
-                                    onPress={() => setActiveLevel(index)}
+                                    onPress={() => setActiveLevel(index)}  // use id to display level
                                     style={{
                         elevation: 10,
                     }}
                     ><Text>Etage: {item.level}</Text></ClickableLevel>
                 ))}
             </LevelContainer>
-            <Map
-                url={`${serverUrl}${levels[activeLevel].planUrl}`}
-                level={levels[activeLevel].level}
-            />
-            <AdmissionContainer horizontal>
-                {admissions && admissions.map((item) => (
-                    <AdmissionCard
-                        key={item.id}
-                        buildingId={buildingId}
-                        levelId={levels[activeLevel].id}
-                        information={item.information}
-                        id={item.id}/>
-                ))}
-            </AdmissionContainer>
+            {/*<Map*/}
+            {/*    url={`${serverUrl}${levels[activeLevel].planUrl}`}*/}
+            {/*    level={levels[activeLevel].level}*/}
+            {/*/>*/}
+            {/*<AdmissionContainer horizontal>*/}
+            {/*    {admissions && admissions.map((item) => (*/}
+            {/*        <AdmissionCard*/}
+            {/*            key={item.id}*/}
+            {/*            buildingId={buildingId}*/}
+            {/*            levelId={levels[activeLevel].id}*/}
+            {/*            information={item.information}*/}
+            {/*            id={item.id}/>*/}
+            {/*    ))}*/}
+            {/*</AdmissionContainer>*/}
         </Container>
 
     )

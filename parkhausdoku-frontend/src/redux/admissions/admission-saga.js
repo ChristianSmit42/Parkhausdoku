@@ -13,7 +13,6 @@ function* deleteAdmission(action) {
         const token = yield select(getAuthToken)
         const admissionId = action.payload.admissionId;
         const levelId = action.payload.levelId;
-        const levelIndex = action.payload.levelIndex;
         const buildingId = action.payload.buildingId;
         yield deleteAdmissionById(token, admissionId, buildingId, levelId);
         yield put({
@@ -21,7 +20,6 @@ function* deleteAdmission(action) {
                 admissionId: admissionId,
                 buildingId: buildingId,
                 levelId: levelId,
-                levelIndex: levelIndex,
             }
         })
     } catch (e) {

@@ -1,23 +1,11 @@
+import {LOAD_BUILDINGS_FAILED, LOAD_BUILDINGS_SUCCESS} from "../utils/building-utils";
 
-import {SET_LEVELS} from "../utils/level-utils";
-import {DELETE_ADMISSION_SUCCESS} from "../utils/admission-utils";
-
-const levelReducer = (state = {status: null,levels:[]}, action) => {
+const levelReducer = (state = {status: null,items:[]}, action) => {
     switch (action.type) {
-        case SET_LEVELS:
-            return {
-                status:'SUCCESS',
-                levels: action.payload,
-            }
-        case DELETE_ADMISSION_SUCCESS:
-            const levelToUpdate = state.levels.find((level)=> level.id === action.payload.levelId);
-            const updatedLevel = {
-                ...levelToUpdate,
-                admissions: levelToUpdate.admissions.filter((admission)=> admission.id !== action.payload.admissionId)}
-
-            const updatedLevels = state.levels.filter((level)=> level.id !== action.payload.levelId);
-            updatedLevels.push(updatedLevel);
-            return {...state, levels:updatedLevels.sort((l1,l2)=> l1.level-l2.level)}
+        case LOAD_BUILDINGS_SUCCESS:
+            return {status: 'SUCCESS', items: action.payload.levels}
+        case LOAD_BUILDINGS_FAILED:
+            return {status: 'FAILED'}
         default:
             return state
     }
