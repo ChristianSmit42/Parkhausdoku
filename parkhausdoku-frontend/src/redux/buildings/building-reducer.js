@@ -7,7 +7,7 @@ const buildingReducer = (state = {status: null, items: []}, action) => {
         case LOAD_BUILDINGS:
             return {status: 'PENDING'}
         case LOAD_BUILDINGS_SUCCESS:
-            return {status: 'SUCCESS', items: action.payload}
+            return {status: 'SUCCESS', items: action.payload.buildings}
         case LOAD_BUILDINGS_FAILED:
             return {status: 'FAILED'}
         default:

@@ -1,17 +1,14 @@
 import {
     DELETE_ADMISSION_SUCCESS,
-    LOAD_ADMISSIONS,
-    LOAD_ADMISSIONS_FAILED,
-    LOAD_ADMISSIONS_SUCCESS
 } from "../utils/admission-utils";
+import {LOAD_BUILDINGS_FAILED, LOAD_BUILDINGS_SUCCESS} from "../utils/building-utils";
 
 const admissionReducer = (state = {status: null, items: []}, action) => {
     switch (action.type) {
-        case LOAD_ADMISSIONS:
-            return {status: 'PENDING'}
-        case LOAD_ADMISSIONS_SUCCESS:
-            return {status: 'SUCCESS', items: action.payload}
-        case LOAD_ADMISSIONS_FAILED:
+
+        case LOAD_BUILDINGS_SUCCESS:
+            return {status: 'SUCCESS', items: action.payload.admissions}
+        case LOAD_BUILDINGS_FAILED:
             return {status: 'FAILED'}
         case DELETE_ADMISSION_SUCCESS:
             return {

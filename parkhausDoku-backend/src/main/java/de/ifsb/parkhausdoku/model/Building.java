@@ -18,5 +18,6 @@ public class Building {
     private String id;
     private String objectName;
     private String ownerId;
+    private String model;
     private List<Level> levels;
 }

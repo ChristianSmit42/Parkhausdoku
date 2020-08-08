@@ -1,10 +1,9 @@
 import React from "react";
-import 'react-native-gesture-handler';
 import {Text} from "react-native-elements";
 import {DELETE_ADMISSION} from "../../redux/utils/admission-utils";
 import {useDispatch} from "react-redux";
 import CustomButton from "../StyledComponents/CustomButton";
-import styled from "styled-components/native"
+import styled from "styled-components/native";
 
 export default function AdmissionCard(props){
     const dispatch = useDispatch();
@@ -12,12 +11,18 @@ export default function AdmissionCard(props){
     function handleDelete() {
         dispatch({
             type:DELETE_ADMISSION,
-            payload:{id:props.id}
+            payload:{
+                admissionId:props.id,
+                buildingId:props.buildingId,
+                levelId:props.levelId,
+            }
         })
     }
 
     return(
-        <Card>
+        <Card style={{
+            elevation:5,
+        }}>
             <Text>{props.information}</Text>
             <CustomButton function={handleDelete} text={"delete"}/>
         </Card>
@@ -29,7 +34,9 @@ export default function AdmissionCard(props){
 const Card = styled.View`
   width: 150px;
   height: 120px;
+  background: #fff;
   justify-content: space-between;
-  border: 1px solid grey;
+  border-radius:20px;
   padding: 5px 5px 10px 5px;
+  margin: 0 5px 5px 5px;
 `

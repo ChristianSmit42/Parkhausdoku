@@ -1,8 +1,10 @@
 import {StyleSheet, View} from "react-native";
+import 'react-native-gesture-handler';
 import React, {useState} from "react";
 import {SafeAreaView} from "react-native-safe-area-context";
 import {Button, Input} from "react-native-elements";
 import {useDispatch} from "react-redux";
+import {LOGIN} from "../../redux/utils/auth-utils";
 
 export default function LoginScreen() {
 
@@ -28,7 +30,7 @@ export default function LoginScreen() {
             />
 
             <Button title={"Login"} disabled={username.length <1 || password < 1}
-                    onPress={() => dispatch({type: "LOGIN", payload: {username, password}})}
+                    onPress={() => dispatch({type: LOGIN, payload: {username, password}})}
             />
 
         </View>

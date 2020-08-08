@@ -1,29 +1,28 @@
 import React from "react";
-import {SvgUri} from "react-native-svg";
+import {SvgCssUri} from "react-native-svg";
 import {Dimensions} from "react-native";
 import Container from "../StyledComponents/Container";
 import styled from 'styled-components/native'
 import ImageZoom from "react-native-image-pan-zoom";
 
-export default function Map({url}){
+export default function Map(props){
 
     return (
         <Container>
             <CenteredView>
                 <StyledText>
-                    Titel
+                   Etage: {props.level}
                 </StyledText>
             </CenteredView>
             <ImageZoom cropWidth={Dimensions.get('window').width}
                        cropHeight={'95%'}
-                       imageWidth={1000}
-                       imageHeight={1000}
-                       enableSwipeDown={true}
+                       imageWidth={500}
+                       imageHeight={500}
             >
-                <SvgUri
+                <SvgCssUri
                     width='90%'
                     height='90%'
-                    uri={url}
+                    uri={props.url}
                 />
             </ImageZoom>
         </Container>
