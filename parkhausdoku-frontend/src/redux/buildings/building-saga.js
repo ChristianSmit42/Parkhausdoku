@@ -42,7 +42,7 @@ function* loadBuildings(action) {
             planUrl:level.planUrl,
             buildingId:level.buildingId,
         }))
-        yield put({type: LOAD_BUILDINGS_SUCCESS, payload: {buildings,levels,admissions}})
+        yield put({type: LOAD_BUILDINGS_SUCCESS, payload: {buildings,admissions,levels}})
     } catch (e) {
         yield put({type: LOAD_BUILDINGS_FAILED})
     }

@@ -5,7 +5,6 @@ import {LOAD_BUILDINGS} from "../../redux/utils/building-utils";
 import BuildingCard from "../../components/BuildingCard/BuildingCard";
 import styled from 'styled-components/native'
 import {ImageBackground} from "react-native";
-import {SET_LEVELS} from "../../redux/utils/level-utils";
 
 export default function HomeScreen({navigation}) {
     const dispatch = useDispatch();
@@ -26,10 +25,6 @@ export default function HomeScreen({navigation}) {
                                   title={item.objectName}
                                   image={item.model}
                                   navigate={() => {
-                                      dispatch({
-                                          type: SET_LEVELS,
-                                          payload: item.levels
-                                      })
                                       navigation.navigate('Details',item)
                                   }}
                     />

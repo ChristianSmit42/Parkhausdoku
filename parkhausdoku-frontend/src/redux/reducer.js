@@ -4,6 +4,7 @@ import {persistReducer} from 'redux-persist'
 import {AsyncStorage} from 'react-native'
 import buildingReducer from "./buildings/building-reducer";
 import levelReducer from "./levels/level-reducer";
+import admissionReducer from "./admissions/admission-reducer";
 
 
 const persisAuthConfig = {
@@ -14,5 +15,6 @@ const persisAuthConfig = {
 export default combineReducers({
     auth: persistReducer(persisAuthConfig, auth),
     buildings: buildingReducer,
-    levels: levelReducer
+    levels: levelReducer,
+    admissions:admissionReducer
 })

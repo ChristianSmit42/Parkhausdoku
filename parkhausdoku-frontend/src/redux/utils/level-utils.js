@@ -1,4 +1,0 @@
-
-export const SET_LEVELS = 'SET_LEVELS';
-export const SET_LEVELS_SUCCESS = 'SET_LEVELS_SUCCESS';
-export const SET_LEVELS_FAILED = 'SET_LEVELS_FAILED'

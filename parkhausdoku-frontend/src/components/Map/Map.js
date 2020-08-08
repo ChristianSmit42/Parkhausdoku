@@ -16,8 +16,8 @@ export default function Map(props){
             </CenteredView>
             <ImageZoom cropWidth={Dimensions.get('window').width}
                        cropHeight={'95%'}
-                       imageWidth={1000}
-                       imageHeight={1000}
+                       imageWidth={500}
+                       imageHeight={500}
             >
                 <SvgCssUri
                     width='90%'
