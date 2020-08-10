@@ -4,33 +4,43 @@ import {Text} from "react-native";
 import styled from 'styled-components/native'
 import Map from "../../components/Map/Map";
 import {serverUrl} from "../../redux/redux-config";
-import {listAllLevels} from "../../redux/levels/level-selector";
+import {listLevelBuilding} from "../../redux/levels/level-selector";
 import {useSelector} from "react-redux";
 import AdmissionCard from "../../components/AdmissionCard/AdmissionCard";
-import {listAllAdmissions} from "../../redux/admissions/admission-selector";
+import {listAdmissionsLevel} from "../../redux/admissions/admission-selector";
+import CustomButton from "../../components/StyledComponents/CustomButton";
+import {Overlay} from "react-native-elements";
+import AdmissionAddOverlay from "../../components/AdmissionCard/AdmissionAddOverlay";
 
 export default function Detailscreen({navigation, route}) {
+    const [visibleAdd, setVisibleAdd] = useState(false);
+
+    const toggleOverlayAdd = () => {
+        setVisibleAdd(!visibleAdd);
+    };
+
     const buildingId = route.params.id;
     const [activeLevel, setActiveLevel] = useState({});
-    const [activeAdmissions, setActiveAdmissions] = useState([]);
-    const levels = useSelector(listAllLevels).filter(level=>(level.buildingId === buildingId)).sort((a,b)=> a.level - b.level);
-    const admissions = useSelector(listAllAdmissions).filter(admission=>(admission.buildingId === buildingId));
+    const levels = useSelector(listLevelBuilding(buildingId));
+    const admissions = useSelector(listAdmissionsLevel(buildingId,activeLevel&&activeLevel.id));
 
 
     useEffect(
         ()=> {
             setActiveLevel(levels[0]);
-            setActiveAdmissions(admissions.filter(admission=>(admission.levelId === levels[0].id)));
         },[buildingId]
     )
 
     function handleLevelChange(id){
         setActiveLevel(levels.find(level => (level.id === id)));
-        setActiveAdmissions(admissions.filter(admission=>(admission.levelId === id)))
     }
 
     return (
         <Container>
+            <AddButton><CustomButton function={toggleOverlayAdd} text="ADD"/></AddButton>
+            <Overlay isVisible={visibleAdd} onBackdropPress={toggleOverlayAdd}>
+                <AdmissionAddOverlay onClose={()=>setVisibleAdd(false)}/>
+            </Overlay>
             <LevelContainer horizontal>
                 {levels && levels.map((item) => (
 
@@ -51,11 +61,10 @@ export default function Detailscreen({navigation, route}) {
                     <Text> no Plan exists </Text>
                 }
             <AdmissionContainer horizontal>
-                {activeAdmissions && activeAdmissions.map((item) => (
+                {admissions && admissions.map((item) => (
                     <AdmissionCard
                         key={item.id}
-                        information={item.information}
-                        id={item.id}/>
+                        admission={item}/>
                 ))}
             </AdmissionContainer>
         </Container>
@@ -80,5 +89,12 @@ const ClickableLevel = styled.TouchableOpacity`
 `
 
 const AdmissionContainer = styled.ScrollView`
-  max-height:20%;
+max-height: 10%;
+`
+
+const AddButton = styled.TouchableOpacity`
+  position: absolute;
+  top:20%;
+  right:5px;
+  z-index: 100;
 `

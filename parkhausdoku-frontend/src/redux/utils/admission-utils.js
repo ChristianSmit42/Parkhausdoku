@@ -17,7 +17,19 @@ export async function deleteAdmissionById(token, admissionId, buildingId,levelId
                 'Authorization': `Bearer ${token}`
             },
         });
-    console.log(response.status)
+    if (response.status !== 200) {
+        throw new Error(response.statusText);
+    }
+}
+
+export async function addAdmission(token,admissionDto) {
+    const response = await fetch(`${serverUrl}/api/building/${buildingId}/${levelId}/admission/${admissionId}`,
+        {
+            method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+        });
     if (response.status !== 200) {
         throw new Error(response.statusText);
     }
