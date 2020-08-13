@@ -11,6 +11,7 @@ import {listAdmissionsLevel} from "../../redux/admissions/admission-selector";
 import CustomButton from "../../components/StyledComponents/CustomButton";
 import {Overlay} from "react-native-elements";
 import AdmissionAddOverlay from "../../components/AdmissionCard/AdmissionAddOverlay";
+import TopBar from "../../components/TopBar/TopBar";
 
 export default function Detailscreen({navigation, route}) {
     const [visibleAdd, setVisibleAdd] = useState(false);
@@ -37,9 +38,10 @@ export default function Detailscreen({navigation, route}) {
 
     return (
         <Container>
-            <AddButton><CustomButton function={toggleOverlayAdd} text="ADD"/></AddButton>
+            <TopBar nav={true} navigation={navigation}/>
+            <AddButton><CustomButton function={toggleOverlayAdd} text="+"/></AddButton>
             <Overlay isVisible={visibleAdd} onBackdropPress={toggleOverlayAdd}>
-                <AdmissionAddOverlay onClose={()=>setVisibleAdd(false)}/>
+                <AdmissionAddOverlay onClose={()=>setVisibleAdd(false)} levelId={activeLevel.id} buildingId={buildingId}/>
             </Overlay>
             <LevelContainer horizontal>
                 {levels && levels.map((item) => (
@@ -94,7 +96,7 @@ max-height: 10%;
 
 const AddButton = styled.TouchableOpacity`
   position: absolute;
-  top:20%;
+  bottom:10%;
   right:5px;
   z-index: 100;
 `

@@ -4,7 +4,8 @@ import {listAllBuildings} from "../../redux/buildings/building-selector";
 import {LOAD_BUILDINGS} from "../../redux/utils/building-utils";
 import BuildingCard from "../../components/BuildingCard/BuildingCard";
 import styled from 'styled-components/native'
-import {ImageBackground} from "react-native";
+import {ImageBackground, StatusBar} from "react-native";
+import TopBar from "../../components/TopBar/TopBar";
 
 export default function HomeScreen({navigation}) {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export default function HomeScreen({navigation}) {
 
     return (
         <ImageBackground source={require('../../resources/bg_bright.png')} style={{width: '100%', height: '100%'}}>
+            <TopBar navigation={navigation} nav={false}/>
             <Container>
                 {buildings && buildings.map((item) => (
                     <BuildingCard key={item.id}
