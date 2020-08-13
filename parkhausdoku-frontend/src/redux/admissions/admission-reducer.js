@@ -1,4 +1,5 @@
 import {
+    ADD_ADMISSION_SUCCESS,
     DELETE_ADMISSION_SUCCESS,
 } from "../utils/admission-utils";
 import {LOAD_BUILDINGS_FAILED, LOAD_BUILDINGS_SUCCESS} from "../utils/building-utils";
@@ -16,6 +17,10 @@ const admissionReducer = (state = {status: null, items: []}, action) => {
                 items: state.items.filter((admission)=>{
                     return admission.id !== action.payload.admissionId;
                 })
+            }
+        case ADD_ADMISSION_SUCCESS:
+            return{
+                items:[...state.items,action.payload.admission]
             }
         default:
             return state

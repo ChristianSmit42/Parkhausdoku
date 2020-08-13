@@ -9,7 +9,7 @@ export const ADD_ADMISSION_SUCCESS = 'ADD_ADMISSION_SUCCESS';
 export const ADD_ADMISSION_FAILED = 'ADD_ADMISSION_FAILED';
 
 
-export async function deleteAdmissionById(token, admissionId, buildingId,levelId) {
+export async function deleteAdmissionById(token, admissionId, buildingId, levelId) {
     const response = await fetch(`${serverUrl}/api/building/${buildingId}/${levelId}/admission/${admissionId}`,
         {
             method: "DELETE",
@@ -22,15 +22,22 @@ export async function deleteAdmissionById(token, admissionId, buildingId,levelId
     }
 }
 
-export async function addAdmission(token,admissionDto) {
-    const response = await fetch(`${serverUrl}/api/building/${buildingId}/${levelId}/admission/${admissionId}`,
+export async function addNewAdmission(token, information, buildingId, levelId) {
+    const response = await fetch(`${serverUrl}/api/building/${buildingId}/${levelId}/admission/`,
         {
-            method: "DELETE",
+            method: "PUT",
             headers: {
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
+            body: JSON.stringify({
+                information,
+                levelId,
+                buildingId,
+            }),
         });
     if (response.status !== 200) {
         throw new Error(response.statusText);
     }
+    return response.json();
 }
