@@ -13,7 +13,10 @@ export default function AdmissionCard(props){
         <Card style={{
             elevation:5,
         }} onPress={toggleOverlayDetail}>
-            <Text>{props.admission.information}</Text>
+            <CardBody>
+                <Text>Component: Pillar</Text>
+                <Text>Identifier: {props.admission.id}</Text>
+            </CardBody>
             <Overlay isVisible={visibleDetail} onBackdropPress={toggleOverlayDetail}>
                 <AdmissionOverviewOverlay admission={props.admission}/>
             </Overlay>
@@ -29,6 +32,13 @@ const Card = styled.TouchableOpacity`
   background: #fff;
   justify-content: space-between;
   border-radius:20px;
-  padding: 5px 5px 10px 5px;
+  overflow:hidden;
+  padding: 10px 10px 10px 10px;
   margin: auto 5px;
+`
+
+const CardBody = styled.View`
+  width: 130px;
+  height:40px;
+  overflow:hidden;
 `
