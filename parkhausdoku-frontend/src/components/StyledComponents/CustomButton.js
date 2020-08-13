@@ -12,17 +12,18 @@ export default function CustomButton(props){
 
 const ButtonContainer = styled.TouchableOpacity`
     border-radius: 50px;
-    background: #4c94e5;
+    background: #000000;
     width: 50px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5px;
+   
 `;
 
 const ButtonText = styled.Text`
-    font-size: 15px;
+    font-size: 45px;
     color: #ffffff;
-    text-align: center;
+    margin-top:-5px;
+    
 `;

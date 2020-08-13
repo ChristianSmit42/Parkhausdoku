@@ -15,7 +15,7 @@ export default function Map(props){
                 </StyledText>
             </CenteredView>
             <ImageZoom cropWidth={Dimensions.get('window').width}
-                       cropHeight={'95%'}
+                       cropHeight={'100%'}
                        imageWidth={500}
                        imageHeight={500}
             >
